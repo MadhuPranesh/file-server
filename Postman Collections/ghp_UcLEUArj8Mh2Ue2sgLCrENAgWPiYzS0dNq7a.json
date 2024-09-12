@@ -1,0 +1,248 @@
+{
+	"info": {
+		"_postman_id": "76afd652-50b1-4b29-8131-209b31246040",
+		"name": "Tyk Todos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetAllTodos",
+			"id": "ae3a5cb8-494c-4c8b-a3d1-7dffa050b81f",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{readPolicy}}",
+						"type": "default"
+					},
+					{
+						"key": "Secret",
+						"value": "{{pluginSecret}}",
+						"type": "text"
+					},
+					{
+						"key": "username",
+						"value": "{{username}}",
+						"type": "text"
+					},
+					{
+						"key": "password",
+						"value": "{{password}}",
+						"type": "text"
+					}
+				],
+				"url": "{{gatewayHost}}/todos/list"
+			},
+			"response": []
+		},
+		{
+			"name": "GetSingleTodo",
+			"id": "783ef29d-cb85-4129-9078-7f85beca32df",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{readPolicy}}",
+						"type": "text"
+					},
+					{
+						"key": "Secret",
+						"value": "{{pluginSecret}}",
+						"type": "text"
+					},
+					{
+						"key": "username",
+						"value": "{{username}}",
+						"type": "text"
+					},
+					{
+						"key": "password",
+						"value": "{{password}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{gatewayHost}}/todos?todoId=1",
+					"host": [
+						"{{gatewayHost}}"
+					],
+					"path": [
+						"todos"
+					],
+					"query": [
+						{
+							"key": "todoId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateTodo",
+			"id": "1d768eed-57ef-463b-89cb-fb7231383251",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{writePolicy}}",
+						"type": "default"
+					},
+					{
+						"key": "Secret",
+						"value": "{{pluginSecret}}",
+						"type": "text"
+					},
+					{
+						"key": "username",
+						"value": "{{username}}",
+						"type": "text"
+					},
+					{
+						"key": "password",
+						"value": "{{password}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"task\": {\n    \"name\": \"Use DummyJSON in the project\",\n    \"isCompleted\": true\n  },\n  \"user\": {\n    \"id\": 5\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{gatewayHost}}/todos/create"
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateTodo",
+			"id": "76ee6fdb-9fb6-4f55-882c-9feb1b0d420c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{writePolicy}}",
+						"type": "default"
+					},
+					{
+						"key": "Secret",
+						"value": "{{pluginSecret}}",
+						"type": "text"
+					},
+					{
+						"key": "username",
+						"value": "{{username}}",
+						"type": "text"
+					},
+					{
+						"key": "password",
+						"value": "{{password}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"completed\" : \"true\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{gatewayHost}}/todos?todoId=2",
+					"host": [
+						"{{gatewayHost}}"
+					],
+					"path": [
+						"todos"
+					],
+					"query": [
+						{
+							"key": "todoId",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteTodo",
+			"id": "f3be5db0-498d-448a-8885-98e485980853",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{adminPolicy}}",
+						"type": "default"
+					},
+					{
+						"key": "Secret",
+						"value": "{{pluginSecret}}",
+						"type": "text"
+					},
+					{
+						"key": "username",
+						"value": "{{username}}",
+						"type": "text"
+					},
+					{
+						"key": "password",
+						"value": "{{password}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{gatewayHost}}/todos?todoId=5",
+					"host": [
+						"{{gatewayHost}}"
+					],
+					"path": [
+						"todos"
+					],
+					"query": [
+						{
+							"key": "todoId",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
